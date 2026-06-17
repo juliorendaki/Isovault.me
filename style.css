@@ -1,0 +1,145 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #06090e; /* Fundo super escuro */
+    background-image: radial-gradient(circle at 50% 0%, #1a2436 0%, #06090e 70%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* CABEÇALHO (HERO) */
+.hero-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(6, 9, 14, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.main-title span {
+    color: #00e5ff; /* Toque de cor neon */
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #8b9bb4;
+    font-weight: 400;
+}
+
+/* CONTAINER DA GRADE */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.console-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+/* CARTÕES DOS CONSOLES (1:1 Premium) */
+.console-card {
+    background: linear-gradient(145deg, #111620, #0a0d14);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho interno no topo do cartão */
+.console-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* Efeito Hover (Quando passa o rato) */
+.console-card:hover {
+    transform: translateY(-8px);
+    border-color: #00e5ff;
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15), 
+                inset 0 0 20px rgba(0, 229, 255, 0.05);
+}
+
+/* IMAGENS COM CORREÇÃO DE TRANSPARÊNCIA E SOMBRA */
+.console-card img {
+    width: 100%;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    background: transparent;
+    /* Esta sombra resolve o visual "seco" e dá profundidade à imagem */
+    filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.6));
+    transition: transform 0.3s ease;
+}
+
+.console-card:hover img {
+    transform: scale(1.1);
+}
+
+/* TEXTO DO CARTÃO */
+.console-card span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    letter-spacing: 0.5px;
+}
+
+/* TERMINAL SECRETO */
+.terminal-hidden { display: none; }
+#terminal-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    background: #000;
+    border: 1px solid #00ff00;
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+.terminal-header {
+    background: #111;
+    color: #00ff00;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #00ff00;
+}
+.terminal-body {
+    padding: 15px;
+    color: #00ff00;
+    font-family: monospace;
+    font-size: 0.9rem;
+    min-height: 100px;
+}
