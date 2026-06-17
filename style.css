@@ -1,15 +1,19 @@
-/* RESET E CONFIGURAÇÕES GERAIS */
+/* CONFIGURAÇÕES GERAIS COM FONTE FUTURISTA */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: #06090e; /* Fundo super escuro */
-    background-image: radial-gradient(circle at 50% 0%, #1a2436 0%, #06090e 70%);
+    background-color: #030508; 
+    background-image: 
+        radial-gradient(circle at 50% 0%, #0a111f 0%, #030508 60%),
+        linear-gradient(0deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
     color: #ffffff;
+    font-family: 'Rajdhani', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -18,101 +22,194 @@ body {
 .hero-header {
     text-align: center;
     padding: 60px 20px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(6, 9, 14, 0.5);
-    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.1);
+    background: rgba(3, 5, 8, 0.7);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
 .main-title {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 .main-title span {
-    color: #00e5ff; /* Toque de cor neon */
-    text-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+    color: #00e5ff;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: #8b9bb4;
-    font-weight: 400;
+    font-size: 1.2rem;
+    color: #637a9c;
+    letter-spacing: 1px;
+    margin-top: 10px;
 }
 
 /* CONTAINER DA GRADE */
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 50px 20px;
 }
 
 .console-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
 }
 
-/* CARTÕES DOS CONSOLES (1:1 Premium) */
+/* ----------------------------------------------------
+   MÁGICA 1: O CARTÃO BASE E O FEIXE DE LUZ (SHIMMER) 
+------------------------------------------------------*/
 .console-card {
-    background: linear-gradient(145deg, #111620, #0a0d14);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 25px 15px;
+    background: #090c13;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s ease;
     cursor: pointer;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Mantém o raio de luz dentro do cartão */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* Efeito de brilho interno no topo do cartão */
-.console-card::before {
+/* O Feixe de Luz animado */
+.console-card::after {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.15), 
+        transparent
+    );
+    transform: skewX(-25deg);
+    animation: lightSweep 4s infinite cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none; /* Para não atrapalhar o clique */
 }
 
-/* Efeito Hover (Quando passa o rato) */
-.console-card:hover {
-    transform: translateY(-8px);
-    border-color: #00e5ff;
-    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15), 
-                inset 0 0 20px rgba(0, 229, 255, 0.05);
+@keyframes lightSweep {
+    0% { left: -150%; }
+    50% { left: 200%; }
+    100% { left: 200%; }
 }
 
-/* IMAGENS COM CORREÇÃO DE TRANSPARÊNCIA E SOMBRA */
+/* ----------------------------------------------------
+   MÁGICA 2: MÁSCARA PARA IMAGENS COM FUNDO
+------------------------------------------------------*/
 .console-card img {
     width: 100%;
-    height: 90px;
+    height: 100px;
     object-fit: contain;
-    margin-bottom: 20px;
-    background: transparent;
-    /* Esta sombra resolve o visual "seco" e dá profundidade à imagem */
-    filter: drop-shadow(0px 10px 8px rgba(0, 0, 0, 0.6));
-    transition: transform 0.3s ease;
+    margin-bottom: 25px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Tenta forçar a mistura da cor branca ou preta da imagem com o fundo */
+    mix-blend-mode: lighten; 
+    filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.8)) contrast(1.1);
 }
 
 .console-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.15) translateY(-5px);
 }
 
-/* TEXTO DO CARTÃO */
 .console-card span {
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #e2e8f0;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+/* ----------------------------------------------------
+   MÁGICA 3: CORES OFICIAIS DE CADA CONSOLE 
+------------------------------------------------------*/
+/* PlayStation 2 (O Azul Escuro e Bonito que pediu) */
+.ps-blue:hover {
+    border-color: #003791;
+    background: radial-gradient(circle at center, #0a1b3f 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(0, 55, 145, 0.6), inset 0 0 15px rgba(0, 55, 145, 0.3);
+}
+
+/* PlayStation 1 / Classic (Cinza) */
+.ps-classic:hover {
+    border-color: #8a8a8a;
+    background: radial-gradient(circle at center, #2a2a2a 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(138, 138, 138, 0.4);
+}
+
+/* PlayStation 3 / Vita (Preto e Neon) */
+.ps-black:hover, .ps-light:hover {
+    border-color: #ffffff;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Nintendo Clássico (Vermelho) */
+.nintendo-red:hover {
+    border-color: #e60012;
+    background: radial-gradient(circle at center, #3a0b10 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(230, 0, 18, 0.5), inset 0 0 15px rgba(230, 0, 18, 0.2);
+}
+
+/* Nintendo 64 (Multicor / Dourado) */
+.n64-multi:hover {
+    border-color: #ffcc00;
+    background: radial-gradient(circle at center, #3d330c 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
+}
+
+/* GameCube (Roxo) */
+.gc-purple:hover {
+    border-color: #6509cb;
+    background: radial-gradient(circle at center, #240a40 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(101, 9, 203, 0.6);
+}
+
+/* Wii / Wii U (Azul Ciano) */
+.wii-cyan:hover {
+    border-color: #00c3e3;
+    background: radial-gradient(circle at center, #0a2d36 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(0, 195, 227, 0.5);
+}
+
+/* GameBoy (Verde Clássico do Ecrã) */
+.gb-green:hover {
+    border-color: #8bac0f;
+    background: radial-gradient(circle at center, #1e2609 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(139, 172, 15, 0.5);
+}
+
+/* Sega Genesis (Azul Sega) */
+.sega-blue:hover {
+    border-color: #0089cf;
+    background: radial-gradient(circle at center, #082638 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(0, 137, 207, 0.6);
+}
+
+/* Dreamcast (Laranja) */
+.sega-orange:hover {
+    border-color: #ff6600;
+    background: radial-gradient(circle at center, #3d1b06 0%, #090c13 80%);
+    box-shadow: 0 0 25px rgba(255, 102, 0, 0.5);
+}
+
+/* TEXTO HOVER */
+.console-card:hover span {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 /* TERMINAL SECRETO */
@@ -121,25 +218,24 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 350px;
-    background: #000;
-    border: 1px solid #00ff00;
+    width: 400px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid #00e5ff;
     border-radius: 8px;
     z-index: 1000;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    font-family: 'Rajdhani', monospace;
 }
 .terminal-header {
-    background: #111;
-    color: #00ff00;
-    padding: 8px 15px;
-    font-size: 0.8rem;
-    border-bottom: 1px solid #00ff00;
+    background: #00e5ff;
+    color: #000;
+    padding: 10px 15px;
+    font-weight: 900;
+    font-size: 1rem;
 }
 .terminal-body {
     padding: 15px;
-    color: #00ff00;
-    font-family: monospace;
-    font-size: 0.9rem;
-    min-height: 100px;
+    color: #00e5ff;
+    font-size: 1rem;
+    min-height: 120px;
 }
