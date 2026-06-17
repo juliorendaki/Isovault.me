@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro ROMs Vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="main-title">🕹️ Retro ROMs Vault</div>
+    </header>
+
+    <main class="content">
+        <div class="console-grid">
+            <div class="console-card"><img src="nes.png" alt="NES"><span>NES</span></div>
+            <div class="console-card"><img src="snes.png" alt="SNES"><span>SNES</span></div>
+            <div class="console-card"><img src="n64.png" alt="N64"><span>N64</span></div>
+            <div class="console-card"><img src="gamecube.png" alt="GameCube"><span>GameCube</span></div>
+            <div class="console-card"><img src="wii.png" alt="Wii"><span>Wii</span></div>
+            <div class="console-card"><img src="wiiu.png" alt="Wii U"><span>Wii U</span></div>
+            <div class="console-card"><img src="ds.png" alt="DS"><span>DS</span></div>
+            <div class="console-card"><img src="3ds.png" alt="3DS"><span>3DS</span></div>
+            <div class="console-card"><img src="ps1.png" alt="PS1"><span>PS1</span></div>
+            <div class="console-card"><img src="ps2.png" alt="PS2"><span>PS2</span></div>
+            <div class="console-card"><img src="ps3.png" alt="PS3"><span>PS3</span></div>
+            <div class="console-card"><img src="psp.png" alt="PSP"><span>PSP</span></div>
+            <div class="console-card"><img src="psvita.png" alt="PS Vita"><span>PS Vita</span></div>
+            <div class="console-card"><img src="gameboy.png" alt="GameBoy"><span>GameBoy</span></div>
+            <div class="console-card"><img src="dreamcast.png" alt="Dreamcast"><span>Dreamcast</span></div>
+            <div class="console-card"><img src="segag.png" alt="Sega"><span>Sega G.</span></div>
+        </div>
+
+        <section id="terminal-container" class="terminal-container hidden">
+            <div class="terminal-header">💻 System Core Terminal</div>
+            <div class="terminal-body" id="terminal-body">
+                <div>[SYSTEM] Pronto para comandos...</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        window.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && (event.key === 'c' || event.key === 'C')) {
+                event.preventDefault();
+                document.getElementById('terminal-container').classList.toggle('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
