@@ -2,38 +2,52 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Retro ROMs Vault</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro ROMs Vault - v0.3</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="console-grid">
-        <div class="console-card"><img src="nes.png" alt="NES"><span>NES</span></div>
-        <div class="console-card"><img src="snes.png" alt="SNES"><span>SNES</span></div>
-        <div class="console-card"><img src="n64.png" alt="N64"><span>N64</span></div>
-        <div class="console-card"><img src="gamecube.png" alt="GameCube"><span>GameCube</span></div>
-        <div class="console-card"><img src="wii.png" alt="Wii"><span>Wii</span></div>
-        <div class="console-card"><img src="wiiu.png" alt="Wii U"><span>Wii U</span></div>
-        <div class="console-card"><img src="ds.png" alt="DS"><span>DS</span></div>
-        <div class="console-card"><img src="3ds.png" alt="3DS"><span>3DS</span></div>
-        <div class="console-card"><img src="ps1.png" alt="PS1"><span>PS1</span></div>
-        <div class="console-card"><img src="ps2.png" alt="PS2"><span>PS2</span></div>
-        <div class="console-card"><img src="ps3.png" alt="PS3"><span>PS3</span></div>
-        <div class="console-card"><img src="psp.png" alt="PSP"><span>PSP</span></div>
-        <div class="console-card"><img src="psvita.png" alt="PS Vita"><span>PS Vita</span></div>
-        <div class="console-card"><img src="gameboy.png" alt="GameBoy"><span>GameBoy</span></div>
-        <div class="console-card"><img src="dreamcast.png" alt="Dreamcast"><span>Dreamcast</span></div>
-        <div class="console-card"><img src="segag.png" alt="Sega"><span>Sega G.</span></div>
+
+    <header class="hero-header">
+        <div class="header-content">
+            <h1 class="main-title">RETRO ROMs <span>VAULT</span></h1>
+            <p class="subtitle">Selecione o seu sistema para iniciar a emulação</p>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="console-grid">
+            <div class="console-card"><img src="nes.png" alt="NES"><span>Nintendo (NES)</span></div>
+            <div class="console-card"><img src="snes.png" alt="SNES"><span>Super Nintendo</span></div>
+            <div class="console-card"><img src="n64.png" alt="N64"><span>Nintendo 64</span></div>
+            <div class="console-card"><img src="gamecube.png" alt="GameCube"><span>GameCube</span></div>
+            <div class="console-card"><img src="wii.png" alt="Wii"><span>Nintendo Wii</span></div>
+            <div class="console-card"><img src="wiiu.png" alt="Wii U"><span>Nintendo Wii U</span></div>
+            <div class="console-card"><img src="gameboy.png" alt="GameBoy"><span>GameBoy</span></div>
+            <div class="console-card"><img src="ds.png" alt="DS"><span>Nintendo DS</span></div>
+            <div class="console-card"><img src="3ds.png" alt="3DS"><span>Nintendo 3DS</span></div>
+            <div class="console-card"><img src="ps1.png" alt="PS1"><span>PlayStation 1</span></div>
+            <div class="console-card"><img src="ps2.png" alt="PS2"><span>PlayStation 2</span></div>
+            <div class="console-card"><img src="ps3.png" alt="PS3"><span>PlayStation 3</span></div>
+            <div class="console-card"><img src="psp.png" alt="PSP"><span>PSP</span></div>
+            <div class="console-card"><img src="psvita.png" alt="PS Vita"><span>PS Vita</span></div>
+            <div class="console-card"><img src="dreamcast.png" alt="Dreamcast"><span>Sega Dreamcast</span></div>
+            <div class="console-card"><img src="segag.png" alt="Sega"><span>Sega Genesis</span></div>
+        </div>
+    </main>
+
+    <div id="terminal-container" class="terminal-hidden">
+        <div class="terminal-header">🔧 System Core</div>
+        <div class="terminal-body">> Sistema Operacional Pronto.</div>
     </div>
 
-    <section id="terminal-container" class="hidden">
-        <div class="terminal-body">Terminal Ativado</div>
-    </section>
-
     <script>
+        // Atalho Ctrl+Shift+C
         window.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+            if (event.ctrlKey && event.shiftKey && (event.key === 'c' || event.key === 'C')) {
                 event.preventDefault();
-                document.getElementById('terminal-container').classList.toggle('hidden');
+                document.getElementById('terminal-container').classList.toggle('terminal-hidden');
             }
         });
     </script>
