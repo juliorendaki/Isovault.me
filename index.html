@@ -3,54 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro ROMs Vault - Premium</title>
+    <title>Retro ROMs Vault | Premium</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header class="hero-header">
-        <div class="header-content">
-            <h1 class="main-title">RETRO ROMs <span>VAULT</span></h1>
-            <p class="subtitle">Selecione o seu sistema para iniciar a ignição</p>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <nav id="side-menu" class="side-menu">
+        <button onclick="toggleMenu()" style="background:none; border:none; color:white; font-size:20px;">✕</button>
+        <h2 style="margin-top:20px;">Emuladores</h2>
+        <div class="wiki-section">
+            <h3>PCSX2 (PS2)</h3>
+            <p>O emulador de referência para a arquitetura Emotion Engine.</p>
+            <a href="https://pcsx2.net/" target="_blank" class="btn-wiki">Site Oficial</a>
         </div>
-    </header>
+        <hr>
+        <a href="#" onclick="showSection('consoles')">Voltar aos Consoles</a>
+    </nav>
 
-    <main class="content-wrapper">
+    <div id="consoles" class="section active">
+        <header class="hero-header">
+            <h1>RETRO ROMs <span>VAULT</span></h1>
+        </header>
         <div class="console-grid">
-            <div class="console-card nintendo-red"><img src="nes.png" alt="NES"><span>Nintendo (NES)</span></div>
-            <div class="console-card nintendo-red"><img src="snes.png" alt="SNES"><span>Super Nintendo</span></div>
-            <div class="console-card n64-multi"><img src="n64.png" alt="N64"><span>Nintendo 64</span></div>
-            <div class="console-card gc-purple"><img src="gamecube.png" alt="GameCube"><span>GameCube</span></div>
-            <div class="console-card wii-cyan"><img src="wii.png" alt="Wii"><span>Nintendo Wii</span></div>
-            <div class="console-card wii-cyan"><img src="wiiu.png" alt="Wii U"><span>Nintendo Wii U</span></div>
-            <div class="console-card gb-green"><img src="gameboy.png" alt="GameBoy"><span>GameBoy</span></div>
-            <div class="console-card nintendo-red"><img src="ds.png" alt="DS"><span>Nintendo DS</span></div>
-            <div class="console-card nintendo-red"><img src="3ds.png" alt="3DS"><span>Nintendo 3DS</span></div>
-            
-            <div class="console-card ps-classic"><img src="ps1.png" alt="PS1"><span>PlayStation 1</span></div>
-            <div class="console-card ps-blue"><img src="ps2.png" alt="PS2"><span>PlayStation 2</span></div>
-            <div class="console-card ps-black"><img src="ps3.png" alt="PS3"><span>PlayStation 3</span></div>
-            <div class="console-card ps-light"><img src="psp.png" alt="PSP"><span>PSP</span></div>
-            <div class="console-card ps-light"><img src="psvita.png" alt="PS Vita"><span>PS Vita</span></div>
-            
-            <div class="console-card sega-orange"><img src="dreamcast.png" alt="Dreamcast"><span>Sega Dreamcast</span></div>
-            <div class="console-card sega-blue"><img src="segag.png" alt="Sega"><span>Sega Genesis</span></div>
-        </div>
-    </main>
+            <div class="console-card ps-blue" onclick="showSection('ps2-games')">
+                <img src="ps2.png"><span>PlayStation 2</span>
+            </div>
+            </div>
+    </div>
 
-    <div id="terminal-container" class="terminal-hidden">
-        <div class="terminal-header">/// SYSTEM OVERRIDE</div>
-        <div class="terminal-body">> Sistema Operacional Pronto. Aguardando comandos...</div>
+    <div id="ps2-games" class="section">
+        <div class="back-nav" onclick="showSection('consoles')">← Voltar</div>
+        <h2 class="title-ps2">PlayStation 2 - Biblioteca</h2>
+        <div class="game-list">
+            <div class="game-item">GTA San Andreas</div>
+            <div class="game-item">GTA 3</div>
+            <div class="game-item">Resident Evil 4</div>
+            <div class="game-item">Bomba Patch</div>
+        </div>
     </div>
 
     <script>
-        window.addEventListener('keydown', function(event) {
-            if (event.ctrlKey && event.shiftKey && (event.key === 'c' || event.key === 'C')) {
-                event.preventDefault();
-                document.getElementById('terminal-container').classList.toggle('terminal-hidden');
-            }
-        });
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            toggleMenu(false);
+        }
+        function toggleMenu(show) {
+            document.getElementById('side-menu').classList.toggle('open', show);
+        }
     </script>
 </body>
 </html>
