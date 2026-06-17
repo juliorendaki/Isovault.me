@@ -2,40 +2,35 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro ROMs Vault | Premium</title>
+    <title>Retro ROMs Vault</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
     <nav id="side-menu" class="side-menu">
-        <button onclick="toggleMenu()" style="background:none; border:none; color:white; font-size:20px;">✕</button>
-        <h2 style="margin-top:20px;">Emuladores</h2>
+        <button onclick="toggleMenu()" class="close-btn">✕</button>
+        <h2>Emuladores</h2>
         <div class="wiki-section">
             <h3>PCSX2 (PS2)</h3>
-            <p>O emulador de referência para a arquitetura Emotion Engine.</p>
+            <p>O emulador definitivo para PS2.</p>
             <a href="https://pcsx2.net/" target="_blank" class="btn-wiki">Site Oficial</a>
         </div>
-        <hr>
-        <a href="#" onclick="showSection('consoles')">Voltar aos Consoles</a>
     </nav>
 
     <div id="consoles" class="section active">
-        <header class="hero-header">
-            <h1>RETRO ROMs <span>VAULT</span></h1>
-        </header>
+        <h1 class="main-title">RETRO ROMs VAULT</h1>
         <div class="console-grid">
-            <div class="console-card ps-blue" onclick="showSection('ps2-games')">
-                <img src="ps2.png"><span>PlayStation 2</span>
+            <div class="console-card" onclick="showSection('ps2-games')">
+                <img src="ps2.png" alt="PS2">
+                <span>PlayStation 2</span>
             </div>
-            </div>
+        </div>
     </div>
 
     <div id="ps2-games" class="section">
         <div class="back-nav" onclick="showSection('consoles')">← Voltar</div>
-        <h2 class="title-ps2">PlayStation 2 - Biblioteca</h2>
+        <h2 class="title-ps2">PlayStation 2</h2>
         <div class="game-list">
             <div class="game-item">GTA San Andreas</div>
             <div class="game-item">GTA 3</div>
@@ -48,11 +43,9 @@
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            toggleMenu(false);
+            document.getElementById('side-menu').classList.remove('open');
         }
-        function toggleMenu(show) {
-            document.getElementById('side-menu').classList.toggle('open', show);
-        }
+        function toggleMenu() { document.getElementById('side-menu').classList.toggle('open'); }
     </script>
 </body>
 </html>
